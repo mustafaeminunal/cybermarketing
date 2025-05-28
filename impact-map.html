@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="See the real-time impact of WhiskAWish's feeding program across different locations. Track meals served and cats helped.">
+    <meta name="keywords" content="cat feeding map, impact tracking, animal welfare stats, feeding stations, cat shelters">
+    <title>Impact Map - WhiskAWish</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="container">
+                <div class="logo">
+                    <a href="index.html" class="logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-paw"></i>
+                        </div>
+                        <div class="logo-text">Whisk<span>A</span>Wish</div>
+                    </a>
+                </div>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="meet-the-cats.html">Meet the Cats</a>
+                    <a href="how-it-works.html">How It Works</a>
+                    <a href="impact-map.html" class="active">Impact Map</a>
+                    <a href="success-stories.html">Success Stories</a>
+                    <a href="education-hub.html">Education Hub</a>
+                </div>
+                <button class="feed-now-btn">
+                    <i class="fas fa-heart"></i>
+                    Feed Now
+                </button>
+                <button class="mobile-menu" aria-label="Menu">
+                    <div class="menu-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="impact-map-page">
+        <div class="page-header">
+            <div class="container">
+                <h1>Impact Map</h1>
+                <p>See how WhiskAWish is making a difference across different locations.</p>
+            </div>
+        </div>
+
+        <div class="page-wrapper">
+            <div class="page-content">
+                <div class="impact-dashboard-layout">
+                    <div class="impact-sidebar-left">
+                        <div class="statistics-grid">
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-bowl-food"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <h3>Total Meals</h3>
+                                    <span class="stat-number">50,432</span>
+                                    <span class="stat-change positive">+1,234 this week</span>
+                                </div>
+                            </div>
+
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-cat"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <h3>Cats Helped</h3>
+                                    <span class="stat-number">892</span>
+                                    <span class="stat-change positive">+45 this month</span>
+                                </div>
+                            </div>
+
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <h3>Active Locations</h3>
+                                    <span class="stat-number">142</span>
+                                    <span class="stat-change positive">+3 this month</span>
+                                </div>
+                            </div>
+
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="stat-content">
+                                    <h3>Active Donors</h3>
+                                    <span class="stat-number">1,234</span>
+                                    <span class="stat-change positive">+89 this month</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="impact-main">
+                        <div class="map-container">
+                            <div id="impact-map"></div>
+                            <div class="map-legend">
+                                <div class="legend-item">
+                                    <span class="marker shelter"></span>
+                                    <span>Shelters</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="marker feeding-station"></span>
+                                    <span>Feeding Stations</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="marker success"></span>
+                                    <span>Success Stories</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="recent-activity">
+                            <h3>Recent Activity</h3>
+                            <div class="activity-list">
+                                <div class="activity-item">
+                                    <div class="activity-icon">
+                                        <i class="fas fa-bowl-food"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <p><strong>Luna</strong> was fed by <strong>Sarah M.</strong></p>
+                                        <span class="activity-time">2 minutes ago</span>
+                                    </div>
+                                    <a href="#" class="watch-btn">Watch Live</a>
+                                </div>
+
+                                <div class="activity-item">
+                                    <div class="activity-icon">
+                                        <i class="fas fa-home"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <p>New shelter joined: <strong>Happy Paws Rescue</strong></p>
+                                        <span class="activity-time">1 hour ago</span>
+                                    </div>
+                                    <a href="#" class="view-btn">View Details</a>
+                                </div>
+
+                                <div class="activity-item">
+                                    <div class="activity-icon">
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <p><strong>Whiskers</strong> found a forever home!</p>
+                                        <span class="activity-time">3 hours ago</span>
+                                    </div>
+                                    <a href="#" class="view-btn">Read Story</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cta-section">
+                    <div class="container">
+                        <h2>Ready to Make Your Mark?</h2>
+                        <p>Join our community and help feed cats in your area.</p>
+                        <button class="primary-btn">
+                            <i class="fas fa-heart"></i>
+                            Start Feeding Cats
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>WhiskAWish</h3>
+                    <p>Making a difference, one meal at a time.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="partner.html">Partner With Us</a></li>
+                        <li><a href="impact.html">Our Impact</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="tnr-programs.html">TNR Programs</a></li>
+                        <li><a href="cat-care.html">Cat Care Tips</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Newsletter</h4>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Enter your email" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 WhiskAWish. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="mobile-nav">
+        <div class="mobile-nav-header">
+            <div class="logo">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-paw"></i>
+                    </div>
+                    <div class="logo-text">Whisk<span>A</span>Wish</div>
+                </a>
+            </div>
+            <button class="close-menu" aria-label="Close Menu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <nav class="mobile-nav-links">
+            <button class="feed-now-btn mobile-feed-btn">
+                <i class="fas fa-heart"></i>
+                Feed Now
+            </button>
+            <a href="index.html">Home</a>
+            <a href="meet-the-cats.html">Meet the Cats</a>
+            <a href="how-it-works.html">How It Works</a>
+            <a href="impact-map.html" class="active">Impact Map</a>
+            <a href="success-stories.html">Success Stories</a>
+            <a href="education-hub.html">Education Hub</a>
+        </nav>
+        <div class="mobile-nav-footer">
+            <button class="primary-btn">
+                <i class="fas fa-heart"></i>
+                Feed a Cat Now
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
