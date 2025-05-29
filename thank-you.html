@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Thank you for your donation to help feed stray cats through WhiskAWish.">
+    <meta name="keywords" content="donation thank you, cat donation, animal welfare, thank you page">
+    <title>Thank You - WhiskAWish</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="container">
+                <div class="logo">
+                    <a href="index.html" class="logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-paw"></i>
+                        </div>
+                        <div class="logo-text">Whisk<span>A</span>Wish</div>
+                    </a>
+                </div>
+                <div class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="meet-the-cats.html">Meet the Cats</a>
+                    <a href="how-it-works.html">How It Works</a>
+                    <a href="impact-map.html">Impact Map</a>
+                    <a href="success-stories.html">Success Stories</a>
+                    <a href="education-hub.html">Education Hub</a>
+                </div>
+                <button class="feed-now-btn">
+                    <i class="fas fa-heart"></i>
+                    Feed Now
+                </button>
+                <button class="mobile-menu" aria-label="Menu">
+                    <div class="menu-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="thank-you-page">
+        <div class="paw-pattern"></div>
+        <div class="floating-cats">
+            <i class="fas fa-cat floating-cat" style="top: 10%; left: 10%;"></i>
+            <i class="fas fa-cat floating-cat" style="top: 20%; left: 80%;"></i>
+            <i class="fas fa-cat floating-cat" style="top: 60%; left: 20%;"></i>
+            <i class="fas fa-cat floating-cat" style="top: 70%; left: 70%;"></i>
+            <i class="fas fa-cat floating-cat" style="top: 40%; left: 40%;"></i>
+        </div>
+        
+        <div class="container">
+            <div class="thank-you-content">
+                <div class="thank-you-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h1>Thank You for Your Donation!</h1>
+                <div id="personalizedMessage"></div>
+                <p>Your generosity helps us continue our mission of feeding and caring for stray cats in need.</p>
+                <div class="impact-message">
+                    <h3>Your Impact</h3>
+                    <p id="impactMessage"></p>
+                </div>
+                <div class="next-steps">
+                    <h3>What's Next?</h3>
+                    <p>We'll send you updates about the cats you're helping and photos of their happy meal times.</p>
+                    <div class="button-group">
+                        <a href="meet-the-cats.html" class="primary-btn">
+                            <i class="fas fa-cat"></i>
+                            Meet More Cats
+                        </a>
+                        <a href="success-stories.html" class="secondary-btn">
+                            <i class="fas fa-book-open"></i>
+                            Read Success Stories
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>WhiskAWish</h3>
+                    <p>Making a difference, one meal at a time.</p>
+                    <div class="social-links">
+                        <a href="https://facebook.com/whiskawish" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://instagram.com/whiskawish" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://twitter.com/whiskawish" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="partner.html">Partner With Us</a></li>
+                        <li><a href="impact.html">Our Impact</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="tnr-programs.html">TNR Programs</a></li>
+                        <li><a href="cat-care.html">Cat Care Tips</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Newsletter</h4>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Enter your email" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 WhiskAWish. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get donor info from sessionStorage
+            const donorInfo = JSON.parse(sessionStorage.getItem('donorInfo'));
+            if (donorInfo) {
+                const personalizedMessage = document.getElementById('personalizedMessage');
+                const impactMessage = document.getElementById('impactMessage');
+                
+                personalizedMessage.innerHTML = `<p>Dear ${donorInfo.name}, thank you for your generous donation of $${donorInfo.amount}!</p>`;
+                
+                // Calculate impact
+                const meals = Math.floor(donorInfo.amount / 2);
+                impactMessage.textContent = `Your donation will provide ${meals} meal${meals !== 1 ? 's' : ''} for our furry friends!`;
+                
+                // Clear the session storage
+                sessionStorage.removeItem('donorInfo');
+            }
+        });
+    </script>
+</body>
+</html> 

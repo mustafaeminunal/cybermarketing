@@ -331,40 +331,101 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 300);
     });
 
-    // Feed Buttons
-    const feedBtns = document.querySelectorAll('.feed-btn');
-    feedBtns.forEach(btn => {
-        btn.addEventListener('click', async () => {
-            const catCard = btn.closest('.cat-card');
-            const catName = catCard.querySelector('h3').textContent;
-            
-            try {
-                btn.disabled = true;
-                btn.textContent = 'Processing...';
-                
-                // Simulate API call
-                await new Promise(resolve => setTimeout(resolve, 1500));
-                
-                // Show success message
-                const successMsg = document.createElement('div');
-                successMsg.className = 'success-message';
-                successMsg.textContent = `Thank you for feeding ${catName}! Redirecting to live feed...`;
-                catCard.appendChild(successMsg);
-                
-                // Redirect to live feed (simulate)
-                setTimeout(() => {
-                    // Replace with actual live feed URL
-                    // window.location.href = `/live-feed/${catName}`;
-                    btn.disabled = false;
-                    btn.textContent = 'Feed Me! ($2)';
-                    successMsg.remove();
-                }, 3000);
-            } catch (error) {
-                console.error('Error processing feed request:', error);
-                btn.disabled = false;
-                btn.textContent = 'Feed Me! ($2)';
+    // Feed Now Button Click Handler
+    const feedNowBtns = document.querySelectorAll('.feed-now-btn');
+    feedNowBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            window.location.href = 'meet-the-cats.html';
+        });
+    });
+
+    // Donation Popup Creation
+    const createDonationPopup = () => {
+        const popup = document.createElement('div');
+        popup.className = 'donation-popup';
+        popup.innerHTML = `
+            <div class="donation-popup-content">
+                <button class="close-popup"><i class="fas fa-times"></i></button>
+                <h2>Make a Donation</h2>
+                <form id="donationForm" action="thank-you.html">
+                    <div class="form-group">
+                        <label for="donationAmount">Donation Amount</label>
+                        <select id="donationAmount" name="donationAmount" required>
+                            <option value="2">$2 - One Meal</option>
+                            <option value="5">$5 - Three Meals</option>
+                            <option value="10">$10 - Week of Meals</option>
+                            <option value="20">$20 - Two Weeks of Meals</option>
+                            <option value="custom">Custom Amount</option>
+                        </select>
+                    </div>
+                    <div class="form-group custom-amount" style="display: none;">
+                        <label for="customAmount">Enter Custom Amount ($)</label>
+                        <input type="number" id="customAmount" name="customAmount" min="1" step="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="donorName">Your Name</label>
+                        <input type="text" id="donorName" name="donorName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="donorEmail">Email Address</label>
+                        <input type="email" id="donorEmail" name="donorEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message (Optional)</label>
+                        <textarea id="message" name="message" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="primary-btn">
+                        <i class="fas fa-heart"></i>
+                        Complete Donation
+                    </button>
+                </form>
+            </div>
+        `;
+        document.body.appendChild(popup);
+
+        // Handle custom amount selection
+        const amountSelect = popup.querySelector('#donationAmount');
+        const customAmountGroup = popup.querySelector('.custom-amount');
+        amountSelect.addEventListener('change', function() {
+            customAmountGroup.style.display = this.value === 'custom' ? 'block' : 'none';
+        });
+
+        // Close popup handler
+        const closeBtn = popup.querySelector('.close-popup');
+        closeBtn.addEventListener('click', () => {
+            popup.remove();
+        });
+
+        // Close on outside click
+        popup.addEventListener('click', (e) => {
+            if (e.target === popup) {
+                popup.remove();
             }
         });
+
+        // Form submission
+        const form = popup.querySelector('#donationForm');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const amount = amountSelect.value === 'custom' 
+                ? popup.querySelector('#customAmount').value 
+                : amountSelect.value;
+            const name = popup.querySelector('#donorName').value;
+            
+            // Store donor info in sessionStorage for thank you page
+            sessionStorage.setItem('donorInfo', JSON.stringify({
+                name: name,
+                amount: amount
+            }));
+            
+            window.location.href = 'thank-you.html';
+        });
+    };
+
+    // Feed Me Button Click Handler
+    const feedMeBtns = document.querySelectorAll('.feed-btn');
+    feedMeBtns.forEach(btn => {
+        btn.addEventListener('click', createDonationPopup);
     });
 
     // Newsletter Form
